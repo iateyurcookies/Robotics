@@ -4,11 +4,14 @@
 // ----------------------------------
 
 #include "vex.h"
+#include "cmath"
 
 using namespace vex;
 
 void usercontrol_cb(void)
 {
+    const int DEADZONE = 5;
+    const double TURN_IMPORTANCE = 0.35;
     while (true)
     {
         // drivetrain code
@@ -17,9 +20,9 @@ void usercontrol_cb(void)
             Cata.setStopping(coast);
             while (1)
             {
-                Controller1.ButtonY.pressed(toggleWings);
-                double turnVal = -(Controller1.Axis3.position(percent));
-                double forwardVal = -Controller1.Axis1.position(percent);
+                Controller.ButtonY.pressed(toggleWings);
+                double turnVal = -(Controller.Axis3.position(percent));
+                double forwardVal = -Controller.Axis1.position(percent);
 
                 // deadzone check
                 if (abs(turnVal) < DEADZONE)
@@ -34,7 +37,7 @@ void usercontrol_cb(void)
 
                 // convert to volts
                 double turnVolts = turnVal * 0.12;
-                double forwardVolts = forwardVal * 0.12 * (1 - (std::abs(turnVolts) / 12.0) * TURN_IMPORTANCE);
+                double forwardVolts = forwardVal * 0.12 * (1 - (abs(turnVolts) / 12.0) * TURN_IMPORTANCE);
 
                 // arcade drive controls
                 LeftMotors.spin(forward, forwardVolts + turnVolts, volt);
@@ -47,7 +50,7 @@ void usercontrol_cb(void)
     // Catapult code
     {
         // cata control
-        if (Controller1.ButtonR1.pressing())
+        if (Controller.ButtonR1.pressing())
         {
             Cata.spin(forward, 40, pct);
         }

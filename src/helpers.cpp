@@ -100,6 +100,12 @@ void closeWings()
     P2.set(false);
 }
 
-void rotateCata() {
+void rotateCata() 
+{
   Cata.spinFor(forward, 365, degrees);
+}
+
+void toggleWings()
+{
+    Wings.set(!Wings.value());
 }

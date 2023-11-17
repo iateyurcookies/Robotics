@@ -7,5 +7,7 @@ void turnLeft();
 void turnRight();
 void openWings();
 void closeWings();
+void rotateCata();
+void toggleWings();
 
 #endif // !HELPERS_H

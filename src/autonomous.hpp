@@ -2,8 +2,7 @@
 #define AUTONOMOUS_H
 
 void pre_auton(void);
-void autoLine();
-void autoNoLine();
+void autonomous();
 void programmingSkills();
 
 #endif // !AUTONOMOUS_H

@@ -28,7 +28,7 @@ void autonUI_init()
   Brain.Screen.drawRectangle(140, 18, AUTON_UI_BUTTONSIZE, AUTON_UI_BUTTONSIZE);
   Brain.Screen.printAt(141, 36, "Select");
   Brain.Screen.setFillColor(black);
-  Brain.Screen.printAt(140, 220, "Line              ");
+  Brain.Screen.printAt(140, 220, "Auton              ");
 }
 
 // CB is setup in autonomous.cpp
@@ -48,11 +48,7 @@ void autonUI_cb()
     case AUTON_LONG:
     default:
       Brain.Screen.printAt(140, 220, "Line              ");
-      Competition.autonomous(autoLine);
-      break;
-    case AUTON_SHORT:
-      Brain.Screen.printAt(140, 220, "No Line             ");
-      Competition.autonomous(autoNoLine);
+      Competition.autonomous(autonomous);
       break;
     case AUTON_SKILLS:
       Brain.Screen.printAt(140, 220, "Programming Skills");

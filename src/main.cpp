@@ -31,7 +31,7 @@ int main()
 	// Initializing Robot Configuration. DO NOT REMOVE!
 	vexcodeInit();
 
-	Competition.autonomous(autoLine);
+	Competition.autonomous(autonomous);
 	Competition.drivercontrol(usercontrol_cb);
 	Brain.Screen.pressed(autonUI_cb);
 
