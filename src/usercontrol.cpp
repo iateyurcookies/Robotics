@@ -52,7 +52,11 @@ void usercontrol_cb(void)
         // cata control
         if (Controller.ButtonR1.pressing())
         {
-            Cata.spin(forward, 40, pct);
+            Cata.spin(forward, 100, pct);
+        }
+        if (Controller.ButtonR2.pressing())
+        {
+            Cata.spin(reverse, 100, pct);
         }
         else
         {

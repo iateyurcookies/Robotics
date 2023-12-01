@@ -12,34 +12,46 @@ void moveBackward(int velocity, double time)
     // Drivetrain.
     FrontLeft.setVelocity(velocity, percent);
     FrontRight.setVelocity(velocity, percent);
-    BackLeft.setVelocity(velocity, percent);
-    BackRight.setVelocity(velocity, percent);
+    BackTopLeft.setVelocity(velocity, percent);
+    BackTopRight.setVelocity(velocity, percent);
+    BackBottomLeft.setVelocity(velocity, percent);
+    BackBottomRight.setVelocity(velocity, percent);
     FrontLeft.spin(forward);
     FrontRight.spin(forward);
-    BackLeft.spin(forward);
-    BackRight.spin(forward);
+    BackTopLeft.spin(forward);
+    BackTopRight.spin(forward);
+    BackBottomLeft.spin(forward);
+    BackBottomRight.spin(forward);
     wait(time, sec);
     FrontLeft.stop();
     FrontRight.stop();
-    BackLeft.stop();
-    BackRight.stop();
+    BackTopLeft.stop();
+    BackTopRight.stop();
+    BackBottomLeft.stop();
+    BackBottomRight.stop();
 }
 
 void moveForward(int velocity, double time)
 {
     FrontLeft.setVelocity(velocity, percent);
     FrontRight.setVelocity(velocity, percent);
-    BackLeft.setVelocity(velocity, percent);
-    BackRight.setVelocity(velocity, percent);
+    BackTopLeft.setVelocity(velocity, percent);
+    BackTopRight.setVelocity(velocity, percent);
+    BackBottomLeft.setVelocity(velocity, percent);
+    BackBottomRight.setVelocity(velocity, percent);
     FrontLeft.spin(reverse);
     FrontRight.spin(reverse);
-    BackLeft.spin(reverse);
-    BackRight.spin(reverse);
+    BackTopLeft.spin(reverse);
+    BackTopRight.spin(reverse);
+    BackBottomLeft.spin(reverse);
+    BackBottomRight.spin(reverse);
     wait(time, sec);
     FrontLeft.stop();
     FrontRight.stop();
-    BackLeft.stop();
-    BackRight.stop();
+    BackTopLeft.stop();
+    BackTopRight.stop();
+    BackBottomLeft.stop();
+    BackBottomRight.stop();
 }
 
 void turnRight()
@@ -47,17 +59,23 @@ void turnRight()
     // Power right motor, to turn left
     FrontRight.setVelocity(75, percent);
     FrontLeft.setVelocity(75, percent);
-    BackRight.setVelocity(75, percent);
-    BackLeft.setVelocity(75, percent);
+    BackTopRight.setVelocity(75, percent);
+    BackTopLeft.setVelocity(75, percent);
+    BackBottomLeft.setVelocity(75, percent);
+    BackBottomRight.setVelocity(75, percent);
     FrontRight.spin(forward);
-    BackRight.spin(forward);
+    BackTopRight.spin(forward);
+    BackBottomRight.spin(forward);
     FrontLeft.spin(reverse);
-    BackLeft.spin(reverse);
+    BackTopLeft.spin(reverse);
+    BackBottomLeft.spin(reverse);
     wait(0.34, sec);
     FrontRight.stop();
     FrontLeft.stop();
-    BackRight.stop();
-    BackLeft.stop();
+    BackTopRight.stop();
+    BackBottomRight.stop();
+    BackTopLeft.stop();
+    BackBottomLeft.stop();
 }
 
 void turnLeft()
@@ -65,17 +83,23 @@ void turnLeft()
     // Power right motor, to turn left
     FrontRight.setVelocity(75, percent);
     FrontLeft.setVelocity(75, percent);
-    BackRight.setVelocity(75, percent);
-    BackLeft.setVelocity(75, percent);
+    BackTopRight.setVelocity(75, percent);
+    BackTopLeft.setVelocity(75, percent);
+    BackBottomLeft.setVelocity(75, percent);
+    BackBottomRight.setVelocity(75, percent);
     FrontRight.spin(reverse);
-    BackRight.spin(reverse);
+    BackTopRight.spin(reverse);
+    BackBottomRight.spin(reverse);
     FrontLeft.spin(forward);
-    BackLeft.spin(forward);
+    BackTopLeft.spin(forward);
+    BackBottomLeft.spin(forward);
     wait(0.34, sec);
     FrontRight.stop();
     FrontLeft.stop();
-    BackRight.stop();
-    BackLeft.stop();
+    BackTopRight.stop();
+    BackBottomRight.stop();
+    BackTopLeft.stop();
+    BackBottomLeft.stop();
 }
 
 void openWings()
@@ -86,7 +110,7 @@ void openWings()
     digital_out P2 = digital_out(Piston2.B);
 
     P1.set(true);
-    P2.set(true);
+    P2.set(P1.value());
 }
 
 void closeWings()
@@ -97,7 +121,7 @@ void closeWings()
     digital_out P2 = digital_out(Piston2.B);
 
     P1.set(false);
-    P2.set(false);
+    P2.set(!P1.value());
 }
 
 void rotateCata() 
@@ -107,5 +131,8 @@ void rotateCata()
 
 void toggleWings()
 {
-    Wings.set(!Wings.value());
+    triport Piston1 = vex::triport(vex::PORT22);
+    digital_out P1 = digital_out(Piston1.A);
+
+    P1.set(!P1.value());
 }

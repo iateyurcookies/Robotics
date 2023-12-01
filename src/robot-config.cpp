@@ -15,10 +15,9 @@ motor BackTopLeft = motor(PORT19, ratio18_1, true);
 motor BackTopRight = motor(PORT9, ratio18_1, false);
 motor BackBottomLeft = motor(PORT20, ratio18_1, false);
 motor BackBottomRight = motor(PORT8, ratio18_1, true);
+motor Cata = motor(PORT18, ratio18_1, true);
 
 pneumatics Wings = pneumatics(Brain.ThreeWirePort.A);
-
-motor Cata = motor(PORT18, ratio18_1, true);
 
 rotation RotationSensor = rotation(PORT17);
 

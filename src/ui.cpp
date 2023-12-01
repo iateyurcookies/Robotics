@@ -47,7 +47,7 @@ void autonUI_cb()
     {
     case AUTON_LONG:
     default:
-      Brain.Screen.printAt(140, 220, "Line              ");
+      Brain.Screen.printAt(140, 220, "Auton              ");
       Competition.autonomous(autonomous);
       break;
     case AUTON_SKILLS:
